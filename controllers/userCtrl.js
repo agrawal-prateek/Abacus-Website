@@ -71,6 +71,16 @@ module.exports = {
         let gender = this.request.body.fields.gender;
         let dob = this.request.body.fields.dob;
 
+	if(this.request.body.fields['g-recaptcha-response'] === undefined || this.request.body.fields['g-recaptcha-response'] === '' || this.request.body.fields['g-recaptcha-response'] === null) {
+
+let errorMessage = 'Invalid Recaptcha';
+            yield this.render('signup', {
+                errorMessage: errorMessage
+            });
+
+	}
+	else{
+
         if(course === undefined || year === undefined || branch === undefined){
             course = "null"; 
             branch = "null";
@@ -155,6 +165,8 @@ module.exports = {
                 errorMessage: errorMessage
             });
         }
+
+	}
     },
 
     signupVerification: function*(next) {
