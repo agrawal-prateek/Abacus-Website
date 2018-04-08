@@ -231,7 +231,7 @@ let errorMessage = 'Invalid Recaptcha';
             secure: true, // secure:true for port 465, secure:false for port 587
             auth: {
                 user: 'abacussocietygla@gmail.com',
-                pass: 'prateek@lekhraj'
+                pass: 'sciencesciences8307'
             }
         });
 // setup email data with unicode symbols
@@ -403,7 +403,7 @@ console.log(email);
                 secure: true, // secure:true for port 465, secure:false for port 587
                 auth: {
                     user: 'abacussocietygla@gmail.com',
-                    pass: 'prateek@lekhraj'
+                    pass: 'sciencesciences8307'
                 }
             });
 

@@ -70,7 +70,7 @@ module.exports = {
             secure: true, // secure:true for port 465, secure:false for port 587
             auth: {
                 user: 'abacussocietygla@gmail.com',
-                pass: 'prateek@lekhraj'
+                pass: 'sciencesciences8307'
             }
         });
 
@@ -266,7 +266,7 @@ let output,Error,output1;
             secure: true, // secure:true for port 465, secure:false for port 587
             auth: {
                 user: 'abacussocietygla@gmail.com',
-                pass: 'prateek@lekhraj'
+                pass: 'sciencesciences8307'
             }
         });
 // setup email data with unicode symbols

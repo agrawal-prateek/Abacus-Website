@@ -292,7 +292,7 @@ module.exports = {
                             secure: true, // secure:true for port 465, secure:false for port 587
                             auth: {
                                 user: 'abacussocietygla@gmail.com',
-                                pass: 'prateek@lekhraj'
+                                pass: 'sciencesciences8307'
                             }
                         });
 
