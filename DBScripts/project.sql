@@ -106,7 +106,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES ('Android Development_1','Android Development','AB-1','This workshop is for Android development. Here you will learn basics of Android. This workshop is for B.Tech  only.',100,150,'2017-10-03 10:00:00','2017-10-03 16:00:00',846913,39,'2017-09-22 07:47:25',1,1,'/static/upload/upload_a9639142069ede102529e191ad83a132',78,78,1),('Chrome Development_5','Chrome Development','ITM Conference Hall','This workshop is for development of Google Chrome. In this workshop, you will learn development of Chrome Extensions and Tabs. You should have basic knowledge of HTML, CSS and Javascript to attend this event.',1000,1200,'2017-03-03 10:00:00','2017-04-03 10:00:00',846913,42,'2017-09-22 08:27:35',1,1,'/static/upload/upload_29b29137c1165f460e3c4c8e7f6f0e6f',150,150,1),('Ethical hacking_3','Ethical hacking','AB-1','In this workshop, You will learn the basics of hacking. Email hacking, SQL injection, BruteForce method, Phishing are included.',250,300,'2017-12-12 14:00:00','2017-12-12 18:00:00',846913,39,'2017-11-17 14:09:02',1,1,'/static/upload/upload_32d49ed4cd0a56bcccf6b2d1417739de',90,90,1),('IoT_4','IoT','AB-1','In this workshop, you will learn to work on Raspberry PI. This workshop is for only B.Tech and M.Tech students. ',500,800,'2018-01-01 09:00:00','2018-01-01 14:00:00',846913,39,'2017-09-22 08:13:29',1,1,'/static/upload/upload_ee58fab5ccc3b6404b4b031aafb3fbab',50,50,1),('Node.JS_6','Node.JS','EC conference Hall','In this workshop, you will learn web development with Node.JS. You should have basic knowledge of Javascript',500,600,'2017-03-03 10:00:00','2017-03-03 16:00:00',846913,39,'2017-09-22 08:28:08',1,1,'/static/upload/upload_be49a77231a0bf748bd842cf01376a43',58,57,1),('Python_2','Python','IBM hall','In this workshop, you will learn to make Desktop applications by using Python and its libraries Numpy, Scipy.',150,200,'2017-09-25 08:00:00','2017-09-25 18:00:00',846913,40,'2017-09-22 08:24:18',1,1,'/static/upload/upload_fad852b4a921f45ec2eccfd2086553fe',89,88,1);
+INSERT INTO `event` VALUES ('5ehjdnk,_7','5ehjdnk,','gvhbjn,m','hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj hgj ',52,522,'2018-10-10 10:10:00','2018-10-10 11:11:00',846915,39,'2018-04-10 02:54:46',1,1,'/static/upload/upload_13008a624197427d321b3c0cd3b22712',36,35,1),('Android Development_1','Android Development','AB-1','This workshop is for Android development. Here you will learn basics of Android. This workshop is for B.Tech  only.',100,150,'2017-10-03 10:00:00','2017-10-03 16:00:00',846913,39,'2018-04-09 02:23:42',1,1,'/static/upload/upload_a9639142069ede102529e191ad83a132',78,77,1),('Chrome Development_5','Chrome Development','ITM Conference Hall','This workshop is for development of Google Chrome. In this workshop, you will learn development of Chrome Extensions and Tabs. You should have basic knowledge of HTML, CSS and Javascript to attend this event.',1000,1200,'2017-03-03 10:00:00','2017-04-03 10:00:00',846913,42,'2018-04-09 02:22:30',1,1,'/static/upload/upload_29b29137c1165f460e3c4c8e7f6f0e6f',150,150,1),('Ethical hacking_3','Ethical hacking','AB-1','In this workshop, You will learn the basics of hacking. Email hacking, SQL injection, BruteForce method, Phishing are included.',250,300,'2017-12-12 14:00:00','2017-12-12 18:00:00',846913,39,'2017-11-17 14:09:02',1,1,'/static/upload/upload_32d49ed4cd0a56bcccf6b2d1417739de',90,90,1),('IoT_4','IoT','AB-1','In this workshop, you will learn to work on Raspberry PI. This workshop is for only B.Tech and M.Tech students. ',500,800,'2018-01-01 09:00:00','2018-01-01 14:00:00',846913,39,'2017-09-22 08:13:29',1,1,'/static/upload/upload_ee58fab5ccc3b6404b4b031aafb3fbab',50,50,1),('Node.JS_6','Node.JS','EC conference Hall','In this workshop, you will learn web development with Node.JS. You should have basic knowledge of Javascript',500,600,'2017-03-03 10:00:00','2017-03-03 16:00:00',846913,39,'2017-09-22 08:28:08',1,1,'/static/upload/upload_be49a77231a0bf748bd842cf01376a43',58,57,1),('Python_2','Python','IBM hall','In this workshop, you will learn to make Desktop applications by using Python and its libraries Numpy, Scipy.',150,200,'2017-09-25 08:00:00','2017-09-25 18:00:00',846913,40,'2017-09-22 08:24:18',1,1,'/static/upload/upload_fad852b4a921f45ec2eccfd2086553fe',89,88,1);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +131,7 @@ CREATE TABLE `event_coordinator` (
 
 LOCK TABLES `event_coordinator` WRITE;
 /*!40000 ALTER TABLE `event_coordinator` DISABLE KEYS */;
-INSERT INTO `event_coordinator` VALUES ('Android Development_1',846914),('Android Development_1',846913),('Python_2',846913),('Ethical hacking_3',846913),('IoT_4',846913),('Chrome Development_5',846913),('Node.JS_6',846913);
+INSERT INTO `event_coordinator` VALUES ('Android Development_1',846914),('Android Development_1',846913),('Python_2',846913),('Ethical hacking_3',846913),('IoT_4',846913),('Chrome Development_5',846913),('Node.JS_6',846913),('5ehjdnk,_7',846913),('5ehjdnk,_7',846915);
 /*!40000 ALTER TABLE `event_coordinator` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +201,7 @@ CREATE TABLE `query` (
   PRIMARY KEY (`qid`),
   KEY `id` (`id`),
   CONSTRAINT `query_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `query` (
 
 LOCK TABLES `query` WRITE;
 /*!40000 ALTER TABLE `query` DISABLE KEYS */;
-INSERT INTO `query` VALUES (1,846915,'Are BCA students allowed?','sjknkw',1,'Ethical hacking_3');
+INSERT INTO `query` VALUES (1,846915,'Are BCA students allowed?','sjknkw',1,'Ethical hacking_3'),(2,846915,'s','jk,m',1,'Chrome Development_5'),(3,846915,'s','ygyufhsckml.',1,'Chrome Development_5'),(4,846915,'ss','ikjhg',1,'Chrome Development_5'),(5,846915,'s','hfbgfvsdasxaz',1,'Chrome Development_5'),(6,846915,'s','ssss',1,'Chrome Development_5'),(7,846915,'w','fcgvhbjn',1,'Chrome Development_5'),(8,846915,'q',NULL,0,'Chrome Development_5'),(9,846915,'q','gdfscd',1,'Chrome Development_5'),(10,846913,'vcx',NULL,0,'5ehjdnk,_7'),(11,846915,'hgvfcdxs',NULL,0,'5ehjdnk,_7'),(12,846915,'rf',NULL,0,'5ehjdnk,_7'),(13,846915,'e',NULL,0,'5ehjdnk,_7');
 /*!40000 ALTER TABLE `query` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `registration` (
   PRIMARY KEY (`reg_no`),
   KEY `id` (`id`),
   CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES (1,846913,'Node.JS_6','2017-09-22 08:24:59',1),(2,846913,'Chrome Development_5','2017-09-22 08:30:48',1);
+INSERT INTO `registration` VALUES (1,846913,'Node.JS_6','2017-09-22 08:24:59',1),(3,846913,'Chrome Development_5','2018-04-09 02:22:30',0),(4,846913,'Android Development_1','2018-04-09 02:23:42',0),(8,846913,'5ehjdnk,_7','2018-04-09 02:35:35',0);
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-27 22:32:19
+-- Dump completed on 2018-04-10  8:45:13

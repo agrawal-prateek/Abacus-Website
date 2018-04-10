@@ -412,7 +412,7 @@ console.log(email);
                 to: email, // list of receivers
                 subject: 'Recover Password', // Subject line
                 text: '', // plain text body
-                html: '<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><style>body{font-family: "Montserrat", serif;}</style><h3>Dear Abacus User,</h3><p>Someone has requested to recover the password for your account on abacus website.</p><p><b>If it was you,</b> then enter <b>'+text+'</b>.</p> <p>The New password that you entered in the form will be activated.</p><b>This code is valid for fifteen minutes only.</b><h4 style="color: red">If it was not you then please ignore this message.</h4><b>Thank you</b>' // html body
+                html: '<link href="https://fonts.googleapis.com/event?family=Montserrat" rel="stylesheet"><style>body{font-family: "Montserrat", serif;}</style><h3>Dear Abacus User,</h3><p>Someone has requested to recover the password for your account on abacus website.</p><p><b>If it was you,</b> then enter <b>'+text+'</b>.</p> <p>The New password that you entered in the form will be activated.</p><b>This code is valid for fifteen minutes only.</b><h4 style="color: red">If it was not you then please ignore this message.</h4><b>Thank you</b>' // html body
             };
 
             transporter.sendMail(mailOptions, (error, info) => {

@@ -5,14 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= event_details[0].event_name %></title>
-
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/fonts/line-icons.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/slicknav.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/nivo-lightbox.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/event/responsive.css">
 </head>
 <body>
 <% if(message){ %>
@@ -35,25 +33,9 @@
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#header-wrap">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#team">
-                            Organizers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pricing">
-                            Pricing
-                        </a>
-                    </li>
-
                     <% if(event_status==="upcoming"){ %>
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-toggle="modal" data-target="#myModal" >
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">
                             Register
                         </a>
                     </li>
@@ -74,7 +56,6 @@
                         </a>
                     </li>
                     <% } %>
-
                     <li class="nav-item">
                         <a class="nav-link" onclick="generatePdf();" href="">
                             Generate report
@@ -88,11 +69,20 @@
                     </li>
                     <%}%>
                     <li class="nav-item">
+                        <a class="nav-link" href="#team">
+                            Organizers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">
+                            Pricing
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contact-map">
                             Ask us
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -100,11 +90,7 @@
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
 
-            <li>
-                <a class="page-scroll" href="#header-wrap">
-                    Home
-                </a>
-            </li>
+
             <li>
                 <a class="page-scroll" href="#team">
                     Organizers
@@ -118,7 +104,7 @@
 
             <% if(event_status==="upcoming"){ %>
             <li>
-                <a class="page-scroll" href="" data-toggle="modal" data-target="#myModal" >
+                <a class="page-scroll" href="" data-toggle="modal" data-target="#myModal">
                     Register
                 </a>
             </li>
@@ -172,9 +158,11 @@
                 <div class="carousel-caption d-md-block">
                     <h1 class="wow fadeInDown heading" data-wow-delay=".4s"><%= event_details[0].event_name %></h1>
                     <% if(event_status==="upcoming"){ %>
-                    <a href="" data-toggle="modal" data-target="#myModal"  class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get Ticket</a>
+                    <a href="" data-toggle="modal" data-target="#myModal" class="fadeInLeft wow btn btn-common btn-lg"
+                       data-wow-delay=".6s">Get Ticket</a>
                     <%}%>
-                    <a id="exploremore"  class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore More</a>
+                    <a id="exploremore" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore
+                        More</a>
                 </div>
             </div>
         </div>
@@ -196,11 +184,8 @@
                 <div class="row time-countdown justify-content-center wow fadeInUp" data-wow-delay="0.2s">
                     <div id="clock" class="time-count"></div>
                 </div>
-                <script>
-                    console.log((new Date("<%=event_details[0].start_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,""));
-                    console.log((new Date("<%=event_details[0].end_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,""));
-                </script>
-                <a id="add-event-link" target="_blank" href="" class="btn btn-common wow fadeInUp" data-wow-delay="0.3s">Add to My Calender</a>
+                <a id="add-event-link" target="_blank" href="" class="btn btn-common wow fadeInUp"
+                   data-wow-delay="0.3s">Add to My Calender</a>
             </div>
         </div>
     </div>
@@ -262,29 +247,73 @@
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <img src="<%= coordinator[i].photo %>" style="border-radius: 50%">
                 <h5 style="margin-top: 15px"><%= coordinator[i].name %></h5>
-                <a href="mailto://<%= coordinator[i].email %>"><h6 class="text-dark"><%= coordinator[i].email %></h6>
+                <a href="mailto://<%= coordinator[i].email %>">
+                    <h6 class="text-dark"><%= coordinator[i].email %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
                 </a>
-                <a href="tel://<%= coordinator[i].mobile_no %>"><h6 class="text-dark"><%= coordinator[i].mobile_no
-                    %></h6></a>
+                <a href="tel://<%= coordinator[i].mobile_no %>">
+                    <h6 class="text-dark"><%= coordinator[i].mobile_no
+                        %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
+                </a>
             </div>
             <%}%>
             <% } else { %>
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <img src="<%= coordinator[0].photo %>" style="border-radius: 50%">
                 <h5 style="margin-top: 15px"><%= coordinator[0].name %></h5>
-                <a href="mailto://<%= coordinator[0].email %>"><h6 class="text-dark"><%= coordinator[0].email %></h6>
+                <a href="mailto://<%= coordinator[0].email %>">
+                    <h6 class="text-dark"><%= coordinator[0].email %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
                 </a>
-                <a href="tel://<%= coordinator[0].mobile_no %>"><h6 class="text-dark"><%= coordinator[0].mobile_no
-                    %></h6></a>
+                <a href="tel://<%= coordinator[0].mobile_no %>">
+                    <h6 class="text-dark"><%= coordinator[0].mobile_no %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
+                </a>
             </div>
             <% for(var i=1;i< coordinator.length;i++) { %>
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <img src="<%= coordinator[i].photo %>" style="border-radius: 50%">
                 <h5 style="margin-top: 15px"><%= coordinator[i].name %></h5>
-                <a href="mailto://<%= coordinator[i].email %>"><h6 class="text-dark"><%= coordinator[i].email %></h6>
+                <a href="mailto://<%= coordinator[i].email %>">
+                    <h6 class="text-dark"><%= coordinator[i].email %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
                 </a>
-                <a href="tel://<%= coordinator[i].mobile_no %>"><h6 class="text-dark"><%= coordinator[i].mobile_no
-                    %></h6></a>
+                <a href="tel://<%= coordinator[i].mobile_no %>">
+                    <h6 class="text-dark"><%= coordinator[i].mobile_no
+                        %>
+                        <svg fill="#000000" height="16" viewBox="0 0 24 24" width="16"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                        </svg>
+                    </h6>
+                </a>
             </div>
             <%}%>
             <%}%>
@@ -426,7 +455,7 @@
                                     <div class="form-group">
                                         <input type="email" class="form-control" id="email" name="email"
                                                placeholder="Email" required data-error="Please enter your Email"
-                                               value="<%= userDetails[0].email %>">
+                                               value="<%= userDetails[0].email %>" style="text-transform: lowercase">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -493,7 +522,8 @@
                     <div class="form-group">
                         <label for="InputNameUser">Name</label>
                         <div style="text-align:center">
-                            <input type="text" class="form-control" id="InputNameUser" value="<%= userDetails[0].name %>"
+                            <input type="text" class="form-control" id="InputNameUser"
+                                   value="<%= userDetails[0].name %>"
                                    placeholder="Name" name="user_name" readonly></div>
                     </div>
                     <div class="form-group">
@@ -503,40 +533,45 @@
                     </div>
                     <div class="form-group">
                         <label for="InputName">Event</label>
-                        <input type="text" class="form-control" id="InputName" value="<%= event_details[0].event_name%>" aria-describedby="emailHelp"
+                        <input type="text" class="form-control" id="InputName" value="<%= event_details[0].event_name%>"
+                               aria-describedby="emailHelp"
                                placeholder="Event Name" name="event_name" readonly>
                     </div>
                     <div class="form-group">
                         <label for="vanuedetails">Venue</label>
-                        <input type="text" class="form-control" id="vanuedetails" value="<%= event_details[0].venue%>" placeholder="enter vanue"
+                        <input type="text" class="form-control" id="vanuedetails" value="<%= event_details[0].venue%>"
+                               placeholder="enter vanue"
                                name="vanue" readonly>
                     </div>
                     <div class="form-group">
                         <label for="start_date_time">Timing</label>
-                        <input class="form-control"  id="start_date_time" value="<%= new Date(event_details[0].start_date_time).toLocaleString('en', { monthname: 'long' }) %>" placeholder="date and time" name="start_date_time" readonly>
+                        <input class="form-control" id="start_date_time"
+                               value="<%= new Date(event_details[0].start_date_time).toLocaleString('en', { monthname: 'long' }) %>"
+                               placeholder="date and time" name="start_date_time" readonly>
 
                     </div>
                 </form>
             </div>
             <div class="modal-footer w3-teal">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-success" ><a href="/register/<%= event_id %>" style="text-decoration: none;color: white">Register</a></button>
+                <button class="btn btn-success"><a href="/register/<%= event_id %>"
+                                                   style="text-decoration: none;color: white">Register</a></button>
             </div>
         </div>
     </div>
 </div>
 <%}%>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="/assets/js/jquery-min.js"></script>
-<script src="/assets/js/popper.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/jquery.countdown.min.js"></script>
-<script src="/assets/js/jquery.nav.js"></script>
-<script src="/assets/js/jquery.easing.min.js"></script>
-<script src="/assets/js/wow.js"></script>
-<script src="/assets/js/jquery.slicknav.js"></script>
-<script src="/assets/js/nivo-lightbox.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="/static/scripts/js/jquery-min.js"></script>
+<script src="/static/scripts/js/popper.min.js"></script>
+<script src="/static/scripts/js/bootstrap.min.js"></script>
+<script src="/static/scripts/js/jquery.countdown.min.js"></script>
+<script src="/static/scripts/js/jquery.nav.js"></script>
+<script src="/static/scripts/js/jquery.easing.min.js"></script>
+<script src="/static/scripts/js/wow.js"></script>
+<script src="/static/scripts/js/jquery.slicknav.js"></script>
+<script src="/static/scripts/js/nivo-lightbox.js"></script>
+<script src="/static/scripts/js/main.js"></script>
 <script type="text/javascript">
     var d = new Date('<%= event_details[0].start_date_time %>');
     jQuery('#clock').countdown(d.getFullYear() + '/' + d.getMonth() + '/' + d.getDay(), function (event) {
@@ -576,39 +611,40 @@
 
         image.src = url;
     }
-    function generatePdf(){
 
-        getDataUri("<%= event_details[0].event_photo %>", function(dataUri) {
+    function generatePdf() {
+
+        getDataUri("<%= event_details[0].event_photo %>", function (dataUri) {
             var doc = new jsPDF("p", "mm", "a4");
             var width = doc.internal.pageSize.width;
             var height = doc.internal.pageSize.height;
-            doc.addImage(dataUri, "JPG", 0, 0, width,height);
+            doc.addImage(dataUri, "JPG", 0, 0, width, height);
             doc.addPage();
             doc.setFontSize(40)
-            doc.setTextColor(100,100,100);
+            doc.setTextColor(100, 100, 100);
             doc.text(10, 25, "<%= event_details[0].event_name %>");
-            doc.setDrawColor(152,152,152);
+            doc.setDrawColor(152, 152, 152);
             doc.line(10, 30, 200, 29);
 
-            doc.setFillColor(245,245,245);
+            doc.setFillColor(245, 245, 245);
             doc.rect(10, 40, 190, 250, "F");
 
             doc.setTextColor(0, 0, 0);
             doc.setFontSize(18)
 
-            doc.text(14, 50,  "Start Time");
-            doc.text(14, 70,  "End Time");
-            doc.text(14, 90,  "Place");
+            doc.text(14, 50, "Start Time");
+            doc.text(14, 70, "End Time");
+            doc.text(14, 90, "Place");
             doc.text(14, 110, "Abacus Price");
             doc.text(14, 130, "Non Abacus price");
             doc.text(14, 150, "Total Seats :");
             doc.text(14, 170, "Avilable Seats :");
 
-            doc.setTextColor(100,100,100);
+            doc.setTextColor(100, 100, 100);
             doc.setFontSize(14)
 
-            doc.text(14, 60,  "<%= event_details[0].start_date_time %>");
-            doc.text(14, 80,  "<%= event_details[0].end_date_time %>");
+            doc.text(14, 60, "<%= event_details[0].start_date_time %>");
+            doc.text(14, 80, "<%= event_details[0].end_date_time %>");
             doc.text(14, 100, "<%= event_details[0].venue %>");
             doc.text(14, 120, "<%= event_details[0].abacus_price %>");
             doc.text(14, 140, "<%= event_details[0].non_abacus_price %>");
@@ -618,37 +654,43 @@
             doc.addPage();
             doc.setFontSize(40)
             doc.text(10, 25, "Coordinators");
-            doc.setDrawColor(152,152,152);
+            doc.setDrawColor(152, 152, 152);
             doc.line(10, 30, 200, 29);
 
-            let y = 40, y1=50, y2=60, y3=70, y4=80, y5=90, y6=100 ;
+            let y = 40, y1 = 50, y2 = 60, y3 = 70, y4 = 80, y5 = 90, y6 = 100;
 
-        <% for(let i in coordinator){ %>
+        <%
+            for (let i in coordinator) { %>
 
-                doc.setFillColor(245,245,245);
+                doc.setFillColor(245, 245, 245);
                 doc.rect(10, y, 190, 70, "F");
                 y += 80;
 
-                doc.setTextColor(0,0,0);
+                doc.setTextColor(0, 0, 0);
                 doc.setFontSize(18)
                 doc.text(14, y1, "<%= coordinator[i].name %>");
                 y1 += 80;
 
                 doc.setFontSize(14)
-                doc.setTextColor(100,100,100);
+                doc.setTextColor(100, 100, 100);
                 doc.text(14, y2, "<%= coordinator[i].email %>");
                 y2 += 80;
                 doc.text(14, y3, "<%= coordinator[i].mobile_no %>");
                 y3 += 80;
-            <% if(coordinator[i].course != "null") { %>
+            <%
+                if (coordinator[i].course != "null") { %>
                     doc.text(14, y4, "<%= coordinator[i].course %>");
                     y4 += 80;
                     doc.text(14, y5, "<%= coordinator[i].branch %>");
                     y5 += 80;
                     doc.text(14, y6, "<%= coordinator[i].year %>");
                     y6 += 80;
-                <% } %>
-            <% } %>
+                <%
+                }
+            %>
+            <%
+            }
+        %>
 
 
             doc.autoPrint();
@@ -657,9 +699,9 @@
     }
 </script>
 <script type="text/javascript">
-    var start = (new Date("<%=event_details[0].start_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,"");
-    var end = (new Date("<%=event_details[0].end_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,"");
-    $('#add-event-link').attr('href','https://www.google.com/calendar/render?action=TEMPLATE&text=<%=event_details[0].event_name%>&dates='+start+'/'+end+'&details=<%=event_details[0].description%>&location=<%=event_details[0].venue%>&sf=true&output=xml');
+    var start = (new Date("<%=event_details[0].start_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g, "");
+    var end = (new Date("<%=event_details[0].end_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g, "");
+    $('#add-event-link').attr('href', 'https://www.google.com/calendar/render?action=TEMPLATE&text=<%=event_details[0].event_name%>&dates=' + start + '/' + end + '&details=<%=event_details[0].description%>&location=<%=event_details[0].venue%>&sf=true&output=xml');
 </script>
 <script type="text/javascript">
     /*!
@@ -670,9 +712,138 @@
  * https://github.com/1000hz/bootstrap-validator
  */
 
-    +function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=a.extend({},d.DEFAULTS,c.data(),"object"==typeof b&&b),f=c.data("bs.validator");(f||"destroy"!=b)&&(f||c.data("bs.validator",f=new d(this,e)),"string"==typeof b&&f[b]())})}var c=':input:not([type="submit"], button):enabled:visible',d=function(b,c){this.$element=a(b),this.options=c,c.errors=a.extend({},d.DEFAULTS.errors,c.errors);for(var e in c.custom)if(!c.errors[e])throw new Error("Missing default error message for custom validator: "+e);a.extend(d.VALIDATORS,c.custom),this.$element.attr("novalidate",!0),this.toggleSubmit(),this.$element.on("input.bs.validator change.bs.validator focusout.bs.validator",a.proxy(this.validateInput,this)),this.$element.on("submit.bs.validator",a.proxy(this.onSubmit,this)),this.$element.find("[data-match]").each(function(){var b=a(this),c=b.data("match");a(c).on("input.bs.validator",function(){b.val()&&b.trigger("input.bs.validator")})})};d.DEFAULTS={delay:500,html:!1,disable:!0,custom:{},errors:{match:"Does not match",minlength:"Not long enough"},feedback:{success:"glyphicon-ok",error:"glyphicon-warning-sign"}},d.VALIDATORS={"native":function(a){var b=a[0];return b.checkValidity?b.checkValidity():!0},match:function(b){var c=b.data("match");return!b.val()||b.val()===a(c).val()},minlength:function(a){var b=a.data("minlength");return!a.val()||a.val().length>=b}},d.prototype.validateInput=function(b){var c=a(b.target),d=c.data("bs.validator.errors");if(c.is('[type="radio"]')&&(c=this.$element.find('input[name="'+c.attr("name")+'"]')),this.$element.trigger(b=a.Event("validate.bs.validator",{relatedTarget:c[0]})),!b.isDefaultPrevented()){var e=this;this.runValidators(c).done(function(f){c.data("bs.validator.errors",f),f.length?e.showErrors(c):e.clearErrors(c),d&&f.toString()===d.toString()||(b=f.length?a.Event("invalid.bs.validator",{relatedTarget:c[0],detail:f}):a.Event("valid.bs.validator",{relatedTarget:c[0],detail:d}),e.$element.trigger(b)),e.toggleSubmit(),e.$element.trigger(a.Event("validated.bs.validator",{relatedTarget:c[0]}))})}},d.prototype.runValidators=function(b){function c(a){return b.data(a+"-error")||b.data("error")||"native"==a&&b[0].validationMessage||g.errors[a]}var e=[],f=a.Deferred(),g=this.options;return b.data("bs.validator.deferred")&&b.data("bs.validator.deferred").reject(),b.data("bs.validator.deferred",f),a.each(d.VALIDATORS,a.proxy(function(a,d){if((b.data(a)||"native"==a)&&!d.call(this,b)){var f=c(a);!~e.indexOf(f)&&e.push(f)}},this)),!e.length&&b.val()&&b.data("remote")?this.defer(b,function(){var d={};d[b.attr("name")]=b.val(),a.get(b.data("remote"),d).fail(function(a,b,d){e.push(c("remote")||d)}).always(function(){f.resolve(e)})}):f.resolve(e),f.promise()},d.prototype.validate=function(){var a=this.options.delay;return this.options.delay=0,this.$element.find(c).trigger("input.bs.validator"),this.options.delay=a,this},d.prototype.showErrors=function(b){var c=this.options.html?"html":"text";this.defer(b,function(){var d=b.closest(".form-group"),e=d.find(".help-block.with-errors"),f=d.find(".form-control-feedback"),g=b.data("bs.validator.errors");g.length&&(g=a("<ul/>").addClass("list-unstyled").append(a.map(g,function(b){return a("<li/>")[c](b)})),void 0===e.data("bs.validator.originalContent")&&e.data("bs.validator.originalContent",e.html()),e.empty().append(g),d.addClass("has-error"),f.length&&f.removeClass(this.options.feedback.success)&&f.addClass(this.options.feedback.error)&&d.removeClass("has-success"))})},d.prototype.clearErrors=function(a){var b=a.closest(".form-group"),c=b.find(".help-block.with-errors"),d=b.find(".form-control-feedback");c.html(c.data("bs.validator.originalContent")),b.removeClass("has-error"),d.length&&d.removeClass(this.options.feedback.error)&&d.addClass(this.options.feedback.success)&&b.addClass("has-success")},d.prototype.hasErrors=function(){function b(){return!!(a(this).data("bs.validator.errors")||[]).length}return!!this.$element.find(c).filter(b).length},d.prototype.isIncomplete=function(){function b(){return"checkbox"===this.type?!this.checked:"radio"===this.type?!a('[name="'+this.name+'"]:checked').length:""===a.trim(this.value)}return!!this.$element.find(c).filter("[required]").filter(b).length},d.prototype.onSubmit=function(a){this.validate(),(this.isIncomplete()||this.hasErrors())&&a.preventDefault()},d.prototype.toggleSubmit=function(){if(this.options.disable){var b=a('button[type="submit"], input[type="submit"]').filter('[form="'+this.$element.attr("id")+'"]').add(this.$element.find('input[type="submit"], button[type="submit"]'));b.toggleClass("disabled",this.isIncomplete()||this.hasErrors()).css({"pointer-events":"all",cursor:"pointer"})}},d.prototype.defer=function(b,c){return c=a.proxy(c,this),this.options.delay?(window.clearTimeout(b.data("bs.validator.timeout")),void b.data("bs.validator.timeout",window.setTimeout(c,this.options.delay))):c()},d.prototype.destroy=function(){return this.$element.removeAttr("novalidate").removeData("bs.validator").off(".bs.validator"),this.$element.find(c).off(".bs.validator").removeData(["bs.validator.errors","bs.validator.deferred"]).each(function(){var b=a(this),c=b.data("bs.validator.timeout");window.clearTimeout(c)&&b.removeData("bs.validator.timeout")}),this.$element.find(".help-block.with-errors").each(function(){var b=a(this),c=b.data("bs.validator.originalContent");b.removeData("bs.validator.originalContent").html(c)}),this.$element.find('input[type="submit"], button[type="submit"]').removeClass("disabled"),this.$element.find(".has-error").removeClass("has-error"),this};var e=a.fn.validator;a.fn.validator=b,a.fn.validator.Constructor=d,a.fn.validator.noConflict=function(){return a.fn.validator=e,this},a(window).on("load",function(){a('form[data-toggle="validator"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery);
+    +function (a) {
+        "use strict";
+
+        function b(b) {
+            return this.each(function () {
+                var c = a(this), e = a.extend({}, d.DEFAULTS, c.data(), "object" == typeof b && b),
+                    f = c.data("bs.validator");
+                (f || "destroy" != b) && (f || c.data("bs.validator", f = new d(this, e)), "string" == typeof b && f[b]())
+            })
+        }
+
+        var c = ':input:not([type="submit"], button):enabled:visible', d = function (b, c) {
+            this.$element = a(b), this.options = c, c.errors = a.extend({}, d.DEFAULTS.errors, c.errors);
+            for (var e in c.custom) if (!c.errors[e]) throw new Error("Missing default error message for custom validator: " + e);
+            a.extend(d.VALIDATORS, c.custom), this.$element.attr("novalidate", !0), this.toggleSubmit(), this.$element.on("input.bs.validator change.bs.validator focusout.bs.validator", a.proxy(this.validateInput, this)), this.$element.on("submit.bs.validator", a.proxy(this.onSubmit, this)), this.$element.find("[data-match]").each(function () {
+                var b = a(this), c = b.data("match");
+                a(c).on("input.bs.validator", function () {
+                    b.val() && b.trigger("input.bs.validator")
+                })
+            })
+        };
+        d.DEFAULTS = {
+            delay: 500,
+            html: !1,
+            disable: !0,
+            custom: {},
+            errors: {match: "Does not match", minlength: "Not long enough"},
+            feedback: {success: "glyphicon-ok", error: "glyphicon-warning-sign"}
+        }, d.VALIDATORS = {
+            "native": function (a) {
+                var b = a[0];
+                return b.checkValidity ? b.checkValidity() : !0
+            }, match: function (b) {
+                var c = b.data("match");
+                return !b.val() || b.val() === a(c).val()
+            }, minlength: function (a) {
+                var b = a.data("minlength");
+                return !a.val() || a.val().length >= b
+            }
+        }, d.prototype.validateInput = function (b) {
+            var c = a(b.target), d = c.data("bs.validator.errors");
+            if (c.is('[type="radio"]') && (c = this.$element.find('input[name="' + c.attr("name") + '"]')), this.$element.trigger(b = a.Event("validate.bs.validator", {relatedTarget: c[0]})), !b.isDefaultPrevented()) {
+                var e = this;
+                this.runValidators(c).done(function (f) {
+                    c.data("bs.validator.errors", f), f.length ? e.showErrors(c) : e.clearErrors(c), d && f.toString() === d.toString() || (b = f.length ? a.Event("invalid.bs.validator", {
+                        relatedTarget: c[0],
+                        detail: f
+                    }) : a.Event("valid.bs.validator", {
+                        relatedTarget: c[0],
+                        detail: d
+                    }), e.$element.trigger(b)), e.toggleSubmit(), e.$element.trigger(a.Event("validated.bs.validator", {relatedTarget: c[0]}))
+                })
+            }
+        }, d.prototype.runValidators = function (b) {
+            function c(a) {
+                return b.data(a + "-error") || b.data("error") || "native" == a && b[0].validationMessage || g.errors[a]
+            }
+
+            var e = [], f = a.Deferred(), g = this.options;
+            return b.data("bs.validator.deferred") && b.data("bs.validator.deferred").reject(), b.data("bs.validator.deferred", f), a.each(d.VALIDATORS, a.proxy(function (a, d) {
+                if ((b.data(a) || "native" == a) && !d.call(this, b)) {
+                    var f = c(a);
+                    !~e.indexOf(f) && e.push(f)
+                }
+            }, this)), !e.length && b.val() && b.data("remote") ? this.defer(b, function () {
+                var d = {};
+                d[b.attr("name")] = b.val(), a.get(b.data("remote"), d).fail(function (a, b, d) {
+                    e.push(c("remote") || d)
+                }).always(function () {
+                    f.resolve(e)
+                })
+            }) : f.resolve(e), f.promise()
+        }, d.prototype.validate = function () {
+            var a = this.options.delay;
+            return this.options.delay = 0, this.$element.find(c).trigger("input.bs.validator"), this.options.delay = a, this
+        }, d.prototype.showErrors = function (b) {
+            var c = this.options.html ? "html" : "text";
+            this.defer(b, function () {
+                var d = b.closest(".form-group"), e = d.find(".help-block.with-errors"),
+                    f = d.find(".form-control-feedback"), g = b.data("bs.validator.errors");
+                g.length && (g = a("<ul/>").addClass("list-unstyled").append(a.map(g, function (b) {
+                    return a("<li/>")[c](b)
+                })), void 0 === e.data("bs.validator.originalContent") && e.data("bs.validator.originalContent", e.html()), e.empty().append(g), d.addClass("has-error"), f.length && f.removeClass(this.options.feedback.success) && f.addClass(this.options.feedback.error) && d.removeClass("has-success"))
+            })
+        }, d.prototype.clearErrors = function (a) {
+            var b = a.closest(".form-group"), c = b.find(".help-block.with-errors"),
+                d = b.find(".form-control-feedback");
+            c.html(c.data("bs.validator.originalContent")), b.removeClass("has-error"), d.length && d.removeClass(this.options.feedback.error) && d.addClass(this.options.feedback.success) && b.addClass("has-success")
+        }, d.prototype.hasErrors = function () {
+            function b() {
+                return !!(a(this).data("bs.validator.errors") || []).length
+            }
+
+            return !!this.$element.find(c).filter(b).length
+        }, d.prototype.isIncomplete = function () {
+            function b() {
+                return "checkbox" === this.type ? !this.checked : "radio" === this.type ? !a('[name="' + this.name + '"]:checked').length : "" === a.trim(this.value)
+            }
+
+            return !!this.$element.find(c).filter("[required]").filter(b).length
+        }, d.prototype.onSubmit = function (a) {
+            this.validate(), (this.isIncomplete() || this.hasErrors()) && a.preventDefault()
+        }, d.prototype.toggleSubmit = function () {
+            if (this.options.disable) {
+                var b = a('button[type="submit"], input[type="submit"]').filter('[form="' + this.$element.attr("id") + '"]').add(this.$element.find('input[type="submit"], button[type="submit"]'));
+                b.toggleClass("disabled", this.isIncomplete() || this.hasErrors()).css({
+                    "pointer-events": "all",
+                    cursor: "pointer"
+                })
+            }
+        }, d.prototype.defer = function (b, c) {
+            return c = a.proxy(c, this), this.options.delay ? (window.clearTimeout(b.data("bs.validator.timeout")), void b.data("bs.validator.timeout", window.setTimeout(c, this.options.delay))) : c()
+        }, d.prototype.destroy = function () {
+            return this.$element.removeAttr("novalidate").removeData("bs.validator").off(".bs.validator"), this.$element.find(c).off(".bs.validator").removeData(["bs.validator.errors", "bs.validator.deferred"]).each(function () {
+                var b = a(this), c = b.data("bs.validator.timeout");
+                window.clearTimeout(c) && b.removeData("bs.validator.timeout")
+            }), this.$element.find(".help-block.with-errors").each(function () {
+                var b = a(this), c = b.data("bs.validator.originalContent");
+                b.removeData("bs.validator.originalContent").html(c)
+            }), this.$element.find('input[type="submit"], button[type="submit"]').removeClass("disabled"), this.$element.find(".has-error").removeClass("has-error"), this
+        };
+        var e = a.fn.validator;
+        a.fn.validator = b, a.fn.validator.Constructor = d, a.fn.validator.noConflict = function () {
+            return a.fn.validator = e, this
+        }, a(window).on("load", function () {
+            a('form[data-toggle="validator"]').each(function () {
+                var c = a(this);
+                b.call(c, c.data())
+            })
+        })
+    }(jQuery);
 </script>
-<!--<script src="/assets/js/form-validator.min.js"></script>-->
 <script type="text/javascript">
     $("#contactForm").validator().on("submit", function (event) {
         if (event.isDefaultPrevented()) {
@@ -687,42 +858,42 @@
     });
 
 
-    function submitForm(){
+    function submitForm() {
         // Initiate Variables With Form Content
         var id = $("#idfaq").val();
         var eventid = $("#eventidfaq").val();
         var desc = $("#message").val();
 
-        console.log(desc,id,eventid)
+        console.log(desc, id, eventid)
 
 
         $.ajax({
             type: "POST",
             url: "/eventFaq",
-            data: {id:id,query:desc,event_id:eventid},
-            success : function(text){
+            data: {id: id, query: desc, event_id: eventid},
+            success: function (text) {
                 formSuccess(text);
             },
-            error : function(){
+            error: function () {
                 formError();
-                submitMSG(false,'Unable to submit!');
+                submitMSG(false, 'Unable to submit!');
             }
         });
     }
 
-    function formSuccess(text){
+    function formSuccess(text) {
         $("#contactForm")[0].reset();
         submitMSG(true, text)
     }
 
-    function formError(){
-        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+    function formError() {
+        $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
             $(this).removeClass();
         });
     }
 
-    function submitMSG(valid, msg){
-        if(valid){
+    function submitMSG(valid, msg) {
+        if (valid) {
             var msgClasses = "h3 text-left tada animated text-success";
         } else {
             var msgClasses = "h3 text-left text-danger";
@@ -730,7 +901,61 @@
         $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
     }
 </script>
-<!--<script src="/assets/js/contact-form-script.min.js"></script>-->
+<style>
+    @font-face {
+        font-family: 'LineIcons';
+        src: url('/static/styles/LineIcons.eot?tc3uo0');
+        src: url('/static/styles/LineIcons.eot?tc3uo0#iefix') format('embedded-opentype'),
+        url('/static/styles/LineIcons.ttf?tc3uo0') format('truetype'),
+        url('/static/styles/LineIcons.woff?tc3uo0') format('woff'),
+        url('/static/styles/LineIcons.svg?tc3uo0#LineIcons') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    [class^="lni-"], [class*=" lni-"] {
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'LineIcons' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .lni-timer:before {
+        content: "\ea15";
+    }
+
+    .lni-users:before {
+        content: "\ea20";
+    }
+
+    .lni-pencil:before {
+        content: "\e9cb";
+    }
+
+    .lni-layers:before {
+        content: "\e9a3";
+    }
+
+    .lni-leaf:before {
+        content: "\e9a5";
+    }
+
+    .lni-chevron-up:before {
+        content: "\e940";
+    }
+
+    .lni-map:before {
+        content: "\e9b3";
+    }
+</style>
 <script src="/static/scripts/jspdf.debug.js"></script>
 <script src="/static/scripts/jspdf.min.js"></script>
 </body>

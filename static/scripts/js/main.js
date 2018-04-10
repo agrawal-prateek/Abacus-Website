@@ -34,13 +34,13 @@
     ========================================================*/
     $('.lightbox').nivoLightbox({
         effect: 'fadeScale',
-        keyboardNav: true,
+        keyboardNav: true
       });
 
-    // one page navigation 
+    // one page navigation
     $('.navbar-nav').onePageNav({
             currentClass: 'active'
-    }); 
+    });
 
     /* Back Top Link active
     ========================================================*/

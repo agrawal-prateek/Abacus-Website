@@ -7850,7 +7850,7 @@ AcroForm.internal.setBitPosition = function (variable, position, value) {
 					//if alignment is not right, it has to be center so split the space to the left and the right
 				} else if (style['text-align'] === 'center') {
 					lines[i][0][1]['margin-left'] = space / 2;
-					//if justify was set, calculate the word spacing and define in by using the css property
+					//if justify was set, calculate the word spacing and define in by using the event property
 				} else if (style['text-align'] === 'justify') {
 					var countSpaces = lines[i][0][0].split(' ').length - 1;
 					lines[i][0][1]['word-spacing'] = space / countSpaces;
@@ -9646,7 +9646,7 @@ Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
 
 		function InjectCSS(cssbody, document) {
 			var styletag = document.createElement('style');
-			styletag.type = 'text/css';
+			styletag.type = 'text/event';
 			if (styletag.styleSheet) {
 				// ie
 				styletag.styleSheet.cssText = cssbody;

@@ -57,7 +57,7 @@
         // clone menu if needed
         if (settings.duplicate) {
             $this.mobileNav = menu.clone();
-            //remove ids from clone to prevent css issues
+            //remove ids from clone to prevent event issues
             $this.mobileNav.removeAttr('id');
             $this.mobileNav.find('*').each(function (i, e) {
                 $(e).removeAttr('id');
