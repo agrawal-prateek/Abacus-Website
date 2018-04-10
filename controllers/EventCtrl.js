@@ -151,10 +151,7 @@ module.exports = {
     showEventDetails: function*(next) {
 
         let currentUser = this.currentUser;
-
         if(currentUser){
-
-            let queryMessage = this.request.query.queryMessage;
             let message = this.request.query.message;
 
             let event_id = this.params.id;
@@ -195,7 +192,6 @@ module.exports = {
                 coordinator: coordinator,
                 event_id : event_id,
                 message : message,
-                queryMessage : queryMessage,
                 userDetails: userDetails,
                 clubname_details : clubname_details,
                 faqQuestions : faqQuestions
@@ -204,10 +200,8 @@ module.exports = {
 
         }
         else {
-
             this.redirect('/login?backRedirectUrl=/events');
         }
-
     },
 
     register: function*(next) {
@@ -334,8 +328,9 @@ module.exports = {
             let query = util.format(queryString, description, id, eventid);
             yield databaseUtils.executeQuery(query);
 
-            let queryMessage = "Your query has successfully been submitted ! We will respond you soon!";
-            this.redirect('/event/'+eventid+'?queryMessage='+queryMessage);
+            let message = "Your query has successfully been submitted ! We will respond you soon!";
+            this.body = message;
+
         }
     }
 };

@@ -1,755 +1,668 @@
 <!DOCTYPE html>
-
 <html lang="en">
+<script>history.pushState(null, "", location.href.split("?")[0]);</script>
 <head>
-    <% include commonHeadElements.html %>
-    <link rel="stylesheet" href="/static/styles/core/w3.css">
-    <link rel="stylesheet" href="/static/styles/event.css">
-    <link rel="stylesheet" href="/static/styles/core/material-scrolltop.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= event_details[0].event_name %></title>
-   
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts/line-icons.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/nivo-lightbox.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
 </head>
-<body style="">
-
-<% if(message) { %>
-<span class="message"></span>
+<body>
+<% if(message){ %>
+<script>alert('<%= message %>')</script>
 <% } %>
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
+                        aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="icon-menu"></span>
+                    <span class="icon-menu"></span>
+                    <span class="icon-menu"></span>
+                </button>
+                <!--<a href="" class="navbar-brand"><img src="/assets/img/logo.png" alt=""></a>-->
+            </div>
+            <div class="collapse navbar-collapse" id="main-navbar">
+                <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#header-wrap">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">
+                            Organizers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">
+                            Pricing
+                        </a>
+                    </li>
 
-<% if(queryMessage) { %>
-<span class="queryMessage"></span>
-<% } %>
-<div id="make-progress">
-</div>
-</div>
-<section id="section01" class="demo w3-animate-opacity" style="transform:translateY(0px);-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);">
-    <img id="section-background" class="lazy poster-img" data-src="<%= event_details[0].event_photo %>" alt="Can"t Show Poster">
+                    <% if(event_status==="upcoming"){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#myModal" >
+                            Register
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/<%= event_id %>?cancelRegistration=yes">
+                            Cancel Registration
+                        </a>
+                    </li>
+                    <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gallery?eventid=<%= event_id %>">
+                            Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/certificate">
+                            Certificate
+                        </a>
+                    </li>
+                    <% } %>
 
-    <h1 id="section-event-heading"><%= event_details[0].event_name %></h1>
-    <div id="section03" class="sectiona demo" style="cursor: pointer;">
-        <a onclick="myscrollfunction()" style="text-align: center"><span></span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="generatePdf();" href="">
+                            Generate report
+                        </a>
+                    </li>
+                    <% if(faqQuestions.length!==0){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">
+                            Faq
+                        </a>
+                    </li>
+                    <%}%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-map">
+                            Ask us
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+
+            <li>
+                <a class="page-scroll" href="#header-wrap">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#team">
+                    Organizers
+                </a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#pricing">
+                    Pricing
+                </a>
+            </li>
+
+            <% if(event_status==="upcoming"){ %>
+            <li>
+                <a class="page-scroll" href="" data-toggle="modal" data-target="#myModal" >
+                    Register
+                </a>
+            </li>
+            <li>
+                <a class="page-scroll" href="/register/<%= event_id %>?cancelRegistration=yes">
+                    Cancel Registration
+                </a>
+            </li>
+            <% } else { %>
+            <li>
+                <a class="page-scroll" href="/gallery?eventid=<%= event_id %>">
+                    Gallery
+                </a>
+            </li>
+            <li>
+                <a class="page-scroll" href="/certificate">
+                    Certificate
+                </a>
+            </li>
+            <% } %>
+
+            <li>
+                <a class="page-scroll" onclick="generatePdf();" href="">
+                    Generate report
+                </a>
+            </li>
+            <% if(faqQuestions.length!==0){ %>
+            <li>
+                <a class="page-scroll" href="#faq">
+                    Faq
+                </a>
+            </li>
+            <%}%>
+            <li>
+                <a class="page-scroll" href="#contact-map">
+                    Ask us
+                </a>
+            </li>
+
+        </ul>
+        <!-- Mobile Menu End -->
+
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Main Carousel Section Start -->
+    <div id="main-slide" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="<%= event_details[0].event_photo %>" alt="First slide">
+                <div class="carousel-caption d-md-block">
+                    <h1 class="wow fadeInDown heading" data-wow-delay=".4s"><%= event_details[0].event_name %></h1>
+                    <% if(event_status==="upcoming"){ %>
+                    <a href="" data-toggle="modal" data-target="#myModal"  class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get Ticket</a>
+                    <%}%>
+                    <a id="exploremore"  class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore More</a>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Main Carousel Section End -->
+</header>
+<!-- Header Area wrapper End -->
 
+<!-- Coundown Section Start -->
+<section id="countdown" class="countdown-timer section-padding">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="heading-count">
+                    <h2 class="wow fadeInDown" data-wow-delay="0.2s">Event Will Start In</h2>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row time-countdown justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <div id="clock" class="time-count"></div>
+                </div>
+                <script>
+                    console.log((new Date("<%=event_details[0].start_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,""));
+                    console.log((new Date("<%=event_details[0].end_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,""));
+                </script>
+                <a id="add-event-link" target="_blank" href="" class="btn btn-common wow fadeInUp" data-wow-delay="0.3s">Add to My Calender</a>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- Coundown Section End -->
 
-
-<div id="mySidenav" class="sidenav" style="box-shadow: 4px 0 5px 0 rgba(0,0,0,0.14),  1px 0 10px 0 rgba(0,0,0,0.12), 2px 0 4px -1px rgba(0,0,0,0.2)">
-    <a href="javascript:void(0)" class="closebtn5" onclick="closeNav()">&times;</a>
-    <br><br><br>
-    <% if(event_status==="previous"){ %>
-    <a href="/certificate" >Certificate </a>
-    <a href="/gallery?eventid=<%= event_id %>" >Gallery</a>
-    <a style="cursor:pointer" onclick="generatePdf();">Generate Report</a>
-    <a>FAQ</a>
-    <% } else { %>
-    <a style="cursor:pointer" onclick="generatePdf();">Generate Report</a>
-    <a style="cursor: pointer" data-toggle="modal" data-target="#myModal" >Register</a>
-    <a href="#faqs" >FAQ</a>
-    <a href="/register/<%= event_id %>?cancelRegistration=yes">Cancel Registration</a>
-    <% } %>
-</div>
-<div id="for-desktop">
-    
-    <div id="main">
-        <!--    <button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4 w3-display-bottomright plus-button" onclick="openNav()">+</button> -->
-        <div class="container-fluid" id="section02">
-
-            <div class="row">
-                <div class="col-sm-11 col-md-11">
-					
-                    <% for(var i in event_details) { %>
-						<br>
-                    <h2 class="heading"><%= event_details[i].event_name %></h2>
-                    <% } %>
-                     <hr style="
-background:#eee;border:none;border-radius:50%
-;height:3px">
-                    
+<!-- Counter Area Start-->
+<section class="counter-section section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Counter Item -->
+            <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+                <div class="counter wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="icon"><i class="lni-map"></i></div>
+                    <p><%= event_details[0].venue %></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-11 jumbotron">
+            <!-- Counter Item -->
+            <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+                <div class="counter wow fadeInRight" data-wow-delay="0.6s">
+                    <div class="icon"><i class="lni-timer"></i></div>
 
-                    <div class="col-md-6 description-div">
-                        <% for(var i in event_details) { %>
-                        <h3><b>Description : </b></h3>
-                        <h4 class="desc"><%= event_details[i].description %></h4>
-                    </div>
-                    <div class="col-md-6 event-detail">
-                        <h4><b>Start Time</b></h4>
-                        <h5><%= event_details[i].start_date_time %></h5>
-                        <h4><b>End Time</b></h4>
-                        <h5><%= event_details[i].end_date_time %></h5>
-                        <h4><b>Place</b></h4>
-                        <h5><%= event_details[i].venue %></h5>
-                        <h4><b>Abacus Price</b></h4>
-                        <h5>Rs <%= event_details[i].abacus_price %></h5>
-                        <h4><b>Non Abacus price</b></h4>
-                        <h5>Rs <%= event_details[i].non_abacus_price %> </h5>
-                        <h4><b>Total Seats : </b></h4>
-                        <h5><%= event_details[i].total_seats %> </h5>
-                        <h4><b>Avilable Seats : </b></h4>
-                        <h5><%= event_details[i].avilable_seats %> </h5>
-                    </div>
-                    <% } %>
-                </div>
-                <% if(coordinator[0]) { %>
-                <div class="row" id="coordinator-print">
-                    <div class="col-md-11">
-                        <h1>Coordinators</h1>
-                          <hr style="
-background:#eee;border:none;border-radius:50%
-;height:3px">
-                    </div>
+                    <p><%= new Date(event_details[0].start_date_time).toLocaleString("en", { monthname: "long" }) %></p>
+                    <span>to</span>
+                    <p><%= new Date(event_details[0].end_date_time).toLocaleString("en", { monthname: "long" }) %></p>
                 </div>
             </div>
+            <!-- Counter Item -->
+            <div class="col-md-6 col-lg-4 col-xs-12 work-counter-widget text-center">
+                <div class="counter wow fadeInRight" data-wow-delay="0.9s">
+                    <div class="icon"><i class="lni-users"></i></div>
+                    <% if(event_details[0].avilable_seats > 0){ %>
+                    <p><%= event_details[0].avilable_seats %> Available Tickets</p>
+                    <span>Hurryup! few tickets are left</span>
+                    <%}else{%>
+                    <p>Sorry, No Seats are left</p>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Counter Area End-->
+
+<!-- Team Section Start -->
+<section id="team" class="section-padding text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Organizers</h1>
+                    <p class="wow fadeInDown" data-wow-delay="0.2s"><%= event_details[0].event_name %></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <% if(coordinator.length%2===0){ %>
             <% for(var i in coordinator) { %>
-            <% if(i%2==0) { %>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <img src="<%= coordinator[i].photo %>" style="border-radius: 50%">
+                <h5 style="margin-top: 15px"><%= coordinator[i].name %></h5>
+                <a href="mailto://<%= coordinator[i].email %>"><h6 class="text-dark"><%= coordinator[i].email %></h6>
+                </a>
+                <a href="tel://<%= coordinator[i].mobile_no %>"><h6 class="text-dark"><%= coordinator[i].mobile_no
+                    %></h6></a>
+            </div>
+            <%}%>
+            <% } else { %>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <img src="<%= coordinator[0].photo %>" style="border-radius: 50%">
+                <h5 style="margin-top: 15px"><%= coordinator[0].name %></h5>
+                <a href="mailto://<%= coordinator[0].email %>"><h6 class="text-dark"><%= coordinator[0].email %></h6>
+                </a>
+                <a href="tel://<%= coordinator[0].mobile_no %>"><h6 class="text-dark"><%= coordinator[0].mobile_no
+                    %></h6></a>
+            </div>
+            <% for(var i=1;i< coordinator.length;i++) { %>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <img src="<%= coordinator[i].photo %>" style="border-radius: 50%">
+                <h5 style="margin-top: 15px"><%= coordinator[i].name %></h5>
+                <a href="mailto://<%= coordinator[i].email %>"><h6 class="text-dark"><%= coordinator[i].email %></h6>
+                </a>
+                <a href="tel://<%= coordinator[i].mobile_no %>"><h6 class="text-dark"><%= coordinator[i].mobile_no
+                    %></h6></a>
+            </div>
+            <%}%>
+            <%}%>
+        </div>
+    </div>
+</section>
+<!-- Team Section End -->
 
-            <div class="row" class="coordinator-print">
-                <div class="col-md-11 jumbotron jmb-odd">
-                    <div class="row">
-                        <div class="col-sm-1">
+<!-- Ask Question Section Start -->
+<% if(faqQuestions.length!==0){ %>
+<section id="faq" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Frequently Asked Question?</h1>
+                    <p class="wow fadeInDown" data-wow-delay="0.2s"><%= event_details[0].event_name %></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <% for(let i=0;i < faqQuestions.length ;i++){ %>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="accordion">
+                    <div class="card">
+                        <div class="card-header" id="heading<%= i %>">
+                            <div class="header-title" data-toggle="collapse" data-target="#question<%= i %>"
+                                 aria-expanded="false" aria-controls="question<%= i %>">
+                                <i class="lni-pencil"></i> <%= faqQuestions[i].description %>
+                            </div>
                         </div>
-                        <div class="col-sm-11 coordinator1 ">
+                        <div id="question<%= i %>" class="collapse" aria-labelledby="heading<%= i %>"
+                             data-parent="#question">
+                            <div class="card-body">
+                                <%= faqQuestions[i].reply %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+</section>
+<% } %>
+<!-- Ask Question Section End -->
+
+<!-- Ticket Pricing Area Start -->
+<section id="pricing" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Our Pricing</h1>
+                    <p class="wow fadeInDown" data-wow-delay="0.2s"><%= event_details[0].event_name %></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-xa-12 mb-3">
+                <div class="price-block-wrapper wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="icon">
+                        <i class="lni-layers"></i>
+                    </div>
+                    <div class="colmun-title">
+                        <h5>Non Abacus Members</h5>
+                    </div>
+                    <div class="price">
+                        <h2>&#8377;<%= event_details[0].non_abacus_price%></h2>
+                        <p><%= event_details[0].avilable_seats %> Tickets Available</p>
+                    </div>
+                    <a href="" data-toggle="modal" data-target="#myModal" class="btn btn-common">Register Now</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xa-12 mb-3">
+                <div class="price-block-wrapper wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="icon">
+                        <i class="lni-leaf"></i>
+                    </div>
+                    <div class="colmun-title">
+                        <h5>Abacus Members</h5>
+                    </div>
+                    <div class="price">
+                        <h2>&#8377;<%= event_details[0].abacus_price%></h2>
+                        <p><%= event_details[0].avilable_seats %> Tickets Available</p>
+                    </div>
+                    <a href="" data-toggle="modal" data-target="#myModal" class="btn btn-common">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Ticket Pricing Area End -->
+
+<!-- Event Slides Section Start -->
+<section id="event-slides" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Description</h1>
+                    <p class="wow fadeInDown" data-wow-delay="0.2s"><%= event_details[0].event_name %></p>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12 col-xs-12 wow fadeInLeft" data-wow-delay="0.3s">
+                <p class="intro-desc" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);padding: 56px;"><%=
+                    event_details[0].description %></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Event Slides Section End -->
+
+<!-- Contact Us Section -->
+<section id="contact-map" class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Drop A Message</h1>
+                    <p class="wow fadeInDown" data-wow-delay="0.2s"><%= event_details[0].event_name %></p>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 col-xs-12">
+                <div class="container-form wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="form-wrapper">
+                        <form role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
                             <div class="row">
-                                <div class="col-sm-4 cn1">
-                                    <img data-src="<%= coordinator[i].photo %>" class=" lazy img img-circle" height="200" width="200" style="text-align: center">
-                                </div>
-                                <div class="col-sm-4 cn2">
-                                    <h2><%= coordinator[i].name %></h2>
-                                    <div class="coordinator-details">
-                                        <a href="mailto://<%= coordinator[i].email %>"><h4 id="email"><%= coordinator[i].email %></h4></a>
-                                        <h4><%= coordinator[i].mobile_no %></h4>
-
-                                        <% if(coordinator[i].course != "null") { %>
-                                        <h4><%= coordinator[i].course %> </h4>
-                                        <h4><%= coordinator[i].branch %></h4>
-                                        
-
-                                        <% if(coordinator[i].year>0) { %>
-
-                                        <% if(coordinator[i].year===1) { %>
-                                        <h4><%= coordinator[i].year %>st Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===2) { %>
-                                        <h4><%= coordinator[i].year %>nd Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===3) { %>
-                                        <h4><%= coordinator[i].year %>rd Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===4) { %>
-                                        <h4><%= coordinator[i].year %>th Year</h4>
-                                        <% } %>
-
-                                        <% }} %>
+                                <div class="col-md-6 form-line">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" name="email"
+                                               placeholder="Name" required data-error="Please enter your name"
+                                               value="<%= userDetails[0].name %>">
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% } else {%>
-            <div class="row" class="coordinator-print">
-
-                <div class="col-md-11 jumbotron jmb-even">
-                    <div class="row">
-                        <div class="col-sm-11 coordinator2 ">
-                            <div class="row">
-                                <div class="col-sm-4 cn3">
-                                    <h2><%= coordinator[i].name %></h2>
-                                    <div class="coordinator-details">
-                                        <a href="mailto://<%= coordinator[i].email %>"><h4 id="email"><%= coordinator[i].email %></h4></a>
-                                        <h4><%= coordinator[i].mobile_no %></h4>
-
-                                        <% if(coordinator[i].course!="null") { %>
-                                        <h4><%= coordinator[i].course %> </h4>
-                                        <h4><%= coordinator[i].branch %></h4>
-                                    
-
-                                        <% if(coordinator[i].year>0) { %>
-
-                                        <% if(coordinator[i].year===1) { %>
-                                        <h4><%= coordinator[i].year %>st Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===2) { %>
-                                        <h4><%= coordinator[i].year %>nd Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===3) { %>
-                                        <h4><%= coordinator[i].year %>rd Year</h4>
-                                        <% } %>
-                                        <% if(coordinator[i].year===4) { %>
-                                        <h4><%= coordinator[i].year %>th Year</h4>
-                                        <% } %>
-
-                                        <% }} %>
+                                <div class="col-md-6 form-line">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="Email" required data-error="Please enter your Email"
+                                               value="<%= userDetails[0].email %>">
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4"></div>
-
-                                <div class="col-sm-4 cn4">
-                                    <img data-src="<%= coordinator[i].photo %>" class=" lazy img-circle" height="200" width="200">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                    </div>
-                </div>
-            </div>
-            <% }}} %>
-
-            <div class="row">
-                <div class="col-md-11">
-                    <div class="jumbotron" style="text-align:center;"><h2>Frequently Asked Question</h2></div>
-                </div>
-            </div>
-
-
-            <div id="faqs">
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <% for(let i in faqQuestions){ %>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" id="head<%= i %>"><%= faqQuestions[i].description %></div>
-                                <div class="panel-body " id="demo<%= i %>"><%= faqQuestions[i].reply %></div>
-                            </div>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-11">
-                        <div class="jumbotron" style="margin-top:2%;">
-
-                            <div class="page-title text-center">
-                                <h2>How can we help you?</h2>
-                            </div>
-
-                            <div class="form-sec">
-
-                                <form action="/eventFaq" method="post" role="form" class="contactForm">
-                                    <input name="event_id" value="<%= event_id %>" style="display: none">
-                                    <input name="id" value="<%= userDetails[0].id %>" style="display: none">
-                                    <div class="col-md-12 form-group">
-                                        <textarea class="form-control text-field-box" name="query" rows="5" placeholder="Your Query"></textarea>
-                                        <div class="validation"></div>
-
-                                        <button class="" id="contact-submit" type="submit"
-                                                style="margin-top:1%; margin-left:43%;border-radius:3px;" data-ripple="#002040">Submit Now
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="message"></label><textarea
+                                            placeholder="Enter Description of Your Query..." class="form-control"
+                                            rows="4"
+                                            id="message" name="query"
+                                            required
+                                            data-error="Write your message"></textarea>
+                                    </div>
+                                    <input id="eventidfaq" name="event_id" value="<%= event_id %>"
+                                           style="display: none">
+                                    <input id="idfaq" name="id" value="<%= userDetails[0].id %>" style="display: none">
+                                    <div class="form-submit">
+                                        <button type="submit" class="btn btn-common" id="form-submit"><i
+                                                class="fa fa-paper-plane" aria-hidden="true"></i> Send Us Now
                                         </button>
-
+                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <% include footer.html %>
     </div>
-    <% include commonFooterScriptElements.html %>
+</section>
+<!-- Contact Us Section End -->
 
-    <script>
+<!-- Footer Section Start -->
+<!-- Footer Section End -->
 
-        $(".message").each(function () {
-            alert("<%= message %>");
-        });
-    </script>
-    <script>
-        $(".queryMessage").each(function () {
-            alert("<%= queryMessage %>");
-        });
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="lni-chevron-up"></i>
+</a>
 
-    </script>
-    <script>
-        function myscrollfunction() {
-            $("#section01").css({"height":"0"});
-            $("#section-event-heading").css({"display":"none"});
-      
-           
-        }
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".panel-body").hide();
-        <% for(let i in faqQuestions){ %>
-                $("#head<%= i %>").click(function () {
-                    $("#demo<%= i %>").toggle(1000);
-                });
-            <% } %>
-        });
-    </script>
-    <script>
-        $(function() {
-            $("a[href*=#]").on("click", function(e) {
-                e.preventDefault();
-                $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top}, 500, "linear");
-            });
-        });
-    </script>
-    <script>
-        let ele = document.getElementsByClassName("panel-heading");
-        ele.onclick = function () {
-
-            this.classList.toggle("active");
-        }
-    </script>
-</div>
-<div id="for-tablet-mobile">
-
-    <div id="main">
-    
-        <button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4 w3-display-bottomright plus-button" onclick="openNav()">+</button>
-        <div class="container" id="section02">
-
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <% for(var i in event_details) { %>
-                    <h2 class="heading"><%= event_details[i].event_name %></h2>
-                    <% } %>
-                      <hr style="
-background:#eee;border:none;border-radius:50%
-;height:3px">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 jumbotron"  class="description-div">
-
-                    <div class="col-md-6">
-                        <% for(var i in event_details) { %>
-                        <h3><b>Description : </b></h3>
-                        <h4 class="desc"><%= event_details[i].description %></h4>
-                    </div>
-                    <div class="col-md-6 event-detail">
-                        <h4><b>Start Time</b></h4>
-                        <h5><%= event_details[i].start_date_time %></h5>
-                        <h4><b>End Time</b></h4>
-                        <h5><%= event_details[i].end_date_time %></h5>
-                        <h4><b>Place</b></h4>
-                        <h5><%= event_details[i].venue %></h5>
-                        <h4><b>Abacus Price</b></h4>
-                        <h5>Rs <%= event_details[i].abacus_price %></h5>
-                        <h4><b>Non Abacus price</b></h4>
-                        <h5>Rs <%= event_details[i].non_abacus_price %> </h5>
-                        <h4><b>Total Seats : </b></h4>
-                        <h5><%= event_details[i].total_seats %> </h5>
-                        <h4><b>Avilable Seats : </b></h4>
-                        <h5><%= event_details[i].avilable_seats %> </h5>
-                    </div>
-                    <% } %>
-                </div>
-                <% if(coordinator[0]) { %>
-                <div class="row" class="coordinator-print">
-                    <div class="col-md-12">
-                        <h1>Coordinators</h1>
-                          <hr style="
-background:#eee;border:none;border-radius:50%
-;height:3px">
-                    </div>
-                </div>
-                <% for(var i in coordinator) { %>
-                <% if(i%2==0) { %>
-                <div class="row" class="coordinator-print" >
-                    <div class="col-md-12 jumbotron jmb-odd">
-                        <div class="row">
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-11 coordinator1 ">
-                                <div class="row">
-                                    <div class="col-sm-4 cn1">
-                                        <img data-src="<%= coordinator[i].photo %>" class=" lazy img img-circle" height="200" width="200" style="text-align: center">
-                                    </div>
-                                    <div class="col-sm-4 cn2">
-                                        <h2><%= coordinator[i].name %></h2>
-                                        <div class="coordinator-details">
-                                            <a href="#"><h4 id="email"><%= coordinator[i].email %></h4></a>
-                                            <h4><%= coordinator[i].mobile_no %></h4>
-
-                                            <% if(coordinator[i].course!="none" || coordinator[i].branch!="none") { %>
-                                            <h4><%= coordinator[i].course %> </h4>
-                                            <h4><%= coordinator[i].branch %></h4>
-                                            <% } %>
-
-                                            <% if(coordinator[i].year>0) { %>
-
-                                            <% if(coordinator[i].year===1) { %>
-                                            <h4><%= coordinator[i].year %>st Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===2) { %>
-                                            <h4><%= coordinator[i].year %>nd Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===3) { %>
-                                            <h4><%= coordinator[i].year %>rd Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===4) { %>
-                                            <h4><%= coordinator[i].year %>th Year</h4>
-                                            <% } %>
-
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% } else {%>
-                <div class="row" class="coordinator-print">
-
-                    <div class="col-md-12 jumbotron jmb-even">
-                        <div class="row">
-                            <div class="col-sm-11 coordinator2 ">
-                                <div class="row">
-                                    <div class="col-sm-4 cn3">
-                                        <h2><%= coordinator[i].name %></h2>
-                                        <div class="coordinator-details">
-                                            <a href="#"><h4 id="email"><%= coordinator[i].email %></h4></a>
-                                            <h4><%= coordinator[i].mobile_no %></h4>
-
-                                            <% if(coordinator[i].course!="none" || coordinator[i].branch!="none") { %>
-                                            <h4><%= coordinator[i].course %> </h4>
-                                            <h4><%= coordinator[i].branch %></h4>
-                                            <% } %>
-
-                                            <% if(coordinator[i].year>0) { %>
-
-                                            <% if(coordinator[i].year===1) { %>
-                                            <h4><%= coordinator[i].year %>st Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===2) { %>
-                                            <h4><%= coordinator[i].year %>nd Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===3) { %>
-                                            <h4><%= coordinator[i].year %>rd Year</h4>
-                                            <% } %>
-                                            <% if(coordinator[i].year===4) { %>
-                                            <h4><%= coordinator[i].year %>th Year</h4>
-                                            <% } %>
-
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4"></div>
-
-                                    <div class="col-sm-4 cn4">
-                                        <img data-src="<%= coordinator[i].photo %>" class=" lazy img-circle" height="200" width="200">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                        </div>
-                    </div>
-                </div>
-                <% }}} %>
-            </div>
-        </div>
-        
-        <div id="faqs">
-            <div class="container">
-                <div class="jumbotron" style="text-align:center;"><h2>Frequently Asked Question</h2></div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <% for(let i in faqQuestions){ %>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" id="head<%= i %>"><%= faqQuestions[i].description %></div>
-                            <div class="panel-body " id="demo<%= i %>"><%= faqQuestions[i].reply %></div>
-                        </div>
-                        <% } %>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="container jumbotron" style="margin-top:2%;">
-
-                <div class="page-title text-center">
-                    <h2>How can we help you?</h2>
-                </div>
-
-                <div class="form-sec">
-
-                    <form action="/eventFaq" method="post" role="form" class="contactForm">
-                        <input name="event_id" value="<%= event_id %>" style="display: none">
-                        <input name="id" value="<%= userDetails[0].id %>" style="display: none">
-                        <div class="col-md-12 form-group">
-                            <textarea class="form-control text-field-box" name="query" rows="5" placeholder="Your Query"></textarea>
-                            <div class="validation"></div>
-<br>
-                            <button style="margin-left: 30%;border-radius:3px;" id="contact-submit" type="submit" data-ripple="#002040">Submit Now
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <% include footer.html %>
+<div id="preloader">
+    <div class="sk-circle">
+        <div class="sk-circle1 sk-child"></div>
+        <div class="sk-circle2 sk-child"></div>
+        <div class="sk-circle3 sk-child"></div>
+        <div class="sk-circle4 sk-child"></div>
+        <div class="sk-circle5 sk-child"></div>
+        <div class="sk-circle6 sk-child"></div>
+        <div class="sk-circle7 sk-child"></div>
+        <div class="sk-circle8 sk-child"></div>
+        <div class="sk-circle9 sk-child"></div>
+        <div class="sk-circle10 sk-child"></div>
+        <div class="sk-circle11 sk-child"></div>
+        <div class="sk-circle12 sk-child"></div>
     </div>
-    <% include commonFooterScriptElements.html %>
-
-    <script>
-
-        $(".message").each(function () {
-            alert("<%= message %>");
-        });
-    </script>
-    <script>
-        $(".queryMessage").each(function () {
-            alert("<%= queryMessage %>");
-        });
-
-    </script>
-    <script>
-        function myscrollfunction() {
-            $("#section01").css({"height":"0"});
-            $("#section-event-heading").css({"display":"none"});
-       
-        }
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".panel-body").hide();
-        <% for(let i in faqQuestions){ %>
-                $("#head<%= i %>").click(function () {
-                    $("#demo<%= i %>").toggle(1000);
-                });
-            <% } %>
-        });
-    </script>
-    <script>
-        $(function() {
-            $("a[href*=#]").on("click", function(e) {
-                e.preventDefault();
-                $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top}, 500, "linear");
-            });
-        });
-    </script>
-    <script>
-        function openNav() {
-
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-            document.getElementById("main").style.padding = "16px";
-            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft= "0";
-            document.getElementById("main").style.padding = "0";
-            document.body.style.backgroundColor = "white"
-        }
-    </script>
 </div>
-<div class="container" style="z-index: 50000;position: relative;">
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header w3-teal" style="padding: 0">
-                            <button type="button" id="register-close-model" class="w3-button w3-padding" data-dismiss="modal">&times;</button>
-                            <p class="modal-title" style="font-size: 40px;padding:15px;padding-bottom: 0">Registration</p>
-                        </div>
-                        <div class="modal-body">
+<% if(event_status==="upcoming"){ %>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
 
-                            <form>
-                                <div class="form-group">
-                                    <label for="InputNameUser">Name</label>
-                                    <div style="text-align:center">
-                                        <input type="text" class="form-control" id="InputNameUser" value="<%= userDetails[0].name %>"
-                                               placeholder="Name" name="user_name" readonly></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userEmail">Email</label>
-                                    <input type="email" class="form-control" id="userEmail" value="<%= userDetails[0].email %>"
-                                           placeholder="Email" name="email" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="InputName">Event</label>
-                                    <input type="text" class="form-control" id="InputName" value="<%= event_details[0].event_name%>" aria-describedby="emailHelp"
-                                           placeholder="Event Name" name="event_name" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="vanuedetails">Venue</label>
-                                    <input type="text" class="form-control" id="vanuedetails" value="<%= event_details[0].venue%>" placeholder="enter vanue"
-                                           name="vanue" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="start_date_time">Timing</label>
-                                    <input class="form-control"  id="start_date_time" value="<%= event_details[0].start_date_time%>"
-                                           placeholder="date and time" name="start_date_time" readonly>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="end_date_time">End Time</label>
-                                    <input class="form-control" id="end_date_time" value="<%= event_details[0].end_date_time%>"
-                                           placeholder="date and time" name="end_date_time" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="abprice">Abacus Price</label>
-                                    <input class="form-control" type="number" id="abprice" value="<%= event_details[0].abacus_price%>" placeholder="abacus price"
-                                           name="abacus_price" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nabprice"> Non Abacus Price</label>
-                                    <input class="form-control" type="number" id="nabprice" value="<%= event_details[0].non_abacus_price%>" placeholder="non abacus price"
-                                           name="non_abacus_price" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="club_detail">Club name</label>
-                                    <input class="form-control" type="text" id="club_detail" value="<%= clubname_details[0].clubname %>" placeholder="club"
-                                           name="clubname" readonly>
-                                </div>
-                            </form>
-
-                        </div>
-                        <div class="modal-footer w3-teal">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            <button class="btn btn-success" ><a href="/register/<%= event_id %>" style="text-decoration: none;color: white">Register</a></button>
-                        </div>
+                <form>
+                    <div class="form-group">
+                        <label for="InputNameUser">Name</label>
+                        <div style="text-align:center">
+                            <input type="text" class="form-control" id="InputNameUser" value="<%= userDetails[0].name %>"
+                                   placeholder="Name" name="user_name" readonly></div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" class="form-control" id="userEmail" value="<%= userDetails[0].email %>"
+                               placeholder="Email" name="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="InputName">Event</label>
+                        <input type="text" class="form-control" id="InputName" value="<%= event_details[0].event_name%>" aria-describedby="emailHelp"
+                               placeholder="Event Name" name="event_name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="vanuedetails">Venue</label>
+                        <input type="text" class="form-control" id="vanuedetails" value="<%= event_details[0].venue%>" placeholder="enter vanue"
+                               name="vanue" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date_time">Timing</label>
+                        <input class="form-control"  id="start_date_time" value="<%= new Date(event_details[0].start_date_time).toLocaleString('en', { monthname: 'long' }) %>" placeholder="date and time" name="start_date_time" readonly>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer w3-teal">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-success" ><a href="/register/<%= event_id %>" style="text-decoration: none;color: white">Register</a></button>
             </div>
         </div>
+    </div>
+</div>
+<%}%>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/assets/js/jquery-min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.countdown.min.js"></script>
+<script src="/assets/js/jquery.nav.js"></script>
+<script src="/assets/js/jquery.easing.min.js"></script>
+<script src="/assets/js/wow.js"></script>
+<script src="/assets/js/jquery.slicknav.js"></script>
+<script src="/assets/js/nivo-lightbox.js"></script>
+<script src="/assets/js/main.js"></script>
 <script type="text/javascript">
-    if(window.outerWidth>968){
-		
-		 $('').appendTo("body");
-        document.getElementById("for-tablet-mobile").style.display="none";
+    var d = new Date('<%= event_details[0].start_date_time %>');
+    jQuery('#clock').countdown(d.getFullYear() + '/' + d.getMonth() + '/' + d.getDay(), function (event) {
+        var $this = jQuery(this).html(event.strftime(''
+            + '<div class="time-entry days"><span>%-D</span> Days</div> '
+            + '<div class="time-entry hours"><span>%H</span> Hours</div> '
+            + '<div class="time-entry minutes"><span>%M</span> Minutes</div> '
+            + '<div class="time-entry seconds"><span>%S</span> Seconds</div> '));
+    });
+
+    /* slicknav mobile menu active  */
+    $('.mobile-menu').slicknav({
+        prependTo: '.navbar-header',
+        parentTag: 'liner',
+        allowParentLinks: true,
+        duplicate: true,
+        label: ''
+    });
+</script>
+<script type="text/javascript">
+    function getDataUri(url, callback) {
+        var image = new Image();
+
+        image.onload = function () {
+            var canvas = document.createElement("canvas");
+            canvas.width = this.naturalWidth; // or "width" if you want a special/scaled size
+            canvas.height = this.naturalHeight; // or "height" if you want a special/scaled size
+
+            canvas.getContext("2d").drawImage(this, 0, 0);
+
+            // Get raw image data
+            callback(canvas.toDataURL("image/png").replace(/^data:image\/(jpg);base64,/, ""));
+
+            // ... or get as Data URI
+            callback(canvas.toDataURL("image/png"));
+        };
+
+        image.src = url;
     }
-    else{
-        document.getElementById("for-desktop").style.display="none";
+    function generatePdf(){
+
+        getDataUri("<%= event_details[0].event_photo %>", function(dataUri) {
+            var doc = new jsPDF("p", "mm", "a4");
+            var width = doc.internal.pageSize.width;
+            var height = doc.internal.pageSize.height;
+            doc.addImage(dataUri, "JPG", 0, 0, width,height);
+            doc.addPage();
+            doc.setFontSize(40)
+            doc.setTextColor(100,100,100);
+            doc.text(10, 25, "<%= event_details[0].event_name %>");
+            doc.setDrawColor(152,152,152);
+            doc.line(10, 30, 200, 29);
+
+            doc.setFillColor(245,245,245);
+            doc.rect(10, 40, 190, 250, "F");
+
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(18)
+
+            doc.text(14, 50,  "Start Time");
+            doc.text(14, 70,  "End Time");
+            doc.text(14, 90,  "Place");
+            doc.text(14, 110, "Abacus Price");
+            doc.text(14, 130, "Non Abacus price");
+            doc.text(14, 150, "Total Seats :");
+            doc.text(14, 170, "Avilable Seats :");
+
+            doc.setTextColor(100,100,100);
+            doc.setFontSize(14)
+
+            doc.text(14, 60,  "<%= event_details[0].start_date_time %>");
+            doc.text(14, 80,  "<%= event_details[0].end_date_time %>");
+            doc.text(14, 100, "<%= event_details[0].venue %>");
+            doc.text(14, 120, "<%= event_details[0].abacus_price %>");
+            doc.text(14, 140, "<%= event_details[0].non_abacus_price %>");
+            doc.text(14, 160, "<%= event_details[0].total_seats %>");
+            doc.text(14, 180, "<%= event_details[0].avilable_seats %>");
+
+            doc.addPage();
+            doc.setFontSize(40)
+            doc.text(10, 25, "Coordinators");
+            doc.setDrawColor(152,152,152);
+            doc.line(10, 30, 200, 29);
+
+            let y = 40, y1=50, y2=60, y3=70, y4=80, y5=90, y6=100 ;
+
+        <% for(let i in coordinator){ %>
+
+                doc.setFillColor(245,245,245);
+                doc.rect(10, y, 190, 70, "F");
+                y += 80;
+
+                doc.setTextColor(0,0,0);
+                doc.setFontSize(18)
+                doc.text(14, y1, "<%= coordinator[i].name %>");
+                y1 += 80;
+
+                doc.setFontSize(14)
+                doc.setTextColor(100,100,100);
+                doc.text(14, y2, "<%= coordinator[i].email %>");
+                y2 += 80;
+                doc.text(14, y3, "<%= coordinator[i].mobile_no %>");
+                y3 += 80;
+            <% if(coordinator[i].course != "null") { %>
+                    doc.text(14, y4, "<%= coordinator[i].course %>");
+                    y4 += 80;
+                    doc.text(14, y5, "<%= coordinator[i].branch %>");
+                    y5 += 80;
+                    doc.text(14, y6, "<%= coordinator[i].year %>");
+                    y6 += 80;
+                <% } %>
+            <% } %>
+
+
+            doc.autoPrint();
+            doc.save("Report.pdf");
+        });
     }
 </script>
-
-
 <script type="text/javascript">
-	
-window.onscroll = function (e) {  
-	if($("#section01").height()>150){
-		 $("#section01").css({"height":"0"});
-		      $("#section-event-heading").css({"display":"none"});
-	}
-    else if($(document).scrollTop()==0){
-	
-        $("#section01").css({"height":"100%"});
-        
-        $("#section-event-heading").css({"display":"block"});
-    
-    }
-} 
+    var start = (new Date("<%=event_details[0].start_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,"");
+    var end = (new Date("<%=event_details[0].end_date_time%>")).toISOString().replace(/-|:|\.\d\d\d/g,"");
+    $('#add-event-link').attr('href','https://www.google.com/calendar/render?action=TEMPLATE&text=<%=event_details[0].event_name%>&dates='+start+'/'+end+'&details=<%=event_details[0].description%>&location=<%=event_details[0].venue%>&sf=true&output=xml');
 </script>
-
-</body>
+<script src="/assets/js/form-validator.min.js"></script>
+<script src="/assets/js/contact-form-script.min.js"></script>
 <script src="/static/scripts/jspdf.debug.js"></script>
 <script src="/static/scripts/jspdf.min.js"></script>
-<script type="text/javascript">
-    
-    function getDataUri(url, callback) {
-    var image = new Image();
-
-    image.onload = function () {
-        var canvas = document.createElement("canvas");
-        canvas.width = this.naturalWidth; // or "width" if you want a special/scaled size
-        canvas.height = this.naturalHeight; // or "height" if you want a special/scaled size
-
-        canvas.getContext("2d").drawImage(this, 0, 0);
-
-        // Get raw image data
-        callback(canvas.toDataURL("image/png").replace(/^data:image\/(jpg);base64,/, ""));
-
-        // ... or get as Data URI
-        callback(canvas.toDataURL("image/png"));
-    };
-
-    image.src = url;
-}
-
-function generatePdf(){
- 
-    getDataUri("<%= event_details[0].event_photo %>", function(dataUri) {
-    var doc = new jsPDF("p", "mm", "a4");
-    var width = doc.internal.pageSize.width;    
-    var height = doc.internal.pageSize.height;
-    doc.addImage(dataUri, "JPG", 0, 0, width,height);
-    doc.addPage();
-    doc.setFontSize(40)
-    doc.setTextColor(100,100,100);
-    doc.text(10, 25, "<%= event_details[0].event_name %>");
-    doc.setDrawColor(152,152,152);
-    doc.line(10, 30, 200, 29);
-
-    doc.setFillColor(245,245,245);
-    doc.rect(10, 40, 190, 250, "F");
-
-    doc.setTextColor(0, 0, 0);
-    doc.setFontSize(18)
-
-    doc.text(14, 50,  "Start Time");
-    doc.text(14, 70,  "End Time");
-    doc.text(14, 90,  "Place");
-    doc.text(14, 110, "Abacus Price");
-    doc.text(14, 130, "Non Abacus price");
-    doc.text(14, 150, "Total Seats :");
-    doc.text(14, 170, "Avilable Seats :");
-
-    doc.setTextColor(100,100,100);
-    doc.setFontSize(14)
-
-    doc.text(14, 60,  "<%= event_details[0].start_date_time %>");
-    doc.text(14, 80,  "<%= event_details[0].end_date_time %>");
-    doc.text(14, 100, "<%= event_details[0].venue %>");
-    doc.text(14, 120, "<%= event_details[0].abacus_price %>");
-    doc.text(14, 140, "<%= event_details[0].non_abacus_price %>");
-    doc.text(14, 160, "<%= event_details[0].total_seats %>");
-    doc.text(14, 180, "<%= event_details[0].avilable_seats %>");
-
-    doc.addPage();
-    doc.setFontSize(40)
-    doc.text(10, 25, "Coordinators");
-    doc.setDrawColor(152,152,152);
-    doc.line(10, 30, 200, 29);
-
-    let y = 40, y1=50, y2=60, y3=70, y4=80, y5=90, y6=100 ;    
-
-    <% for(let i in coordinator){ %>
-
-        doc.setFillColor(245,245,245);
-        doc.rect(10, y, 190, 70, "F");
-        y += 80;
-
-        doc.setTextColor(0,0,0);
-        doc.setFontSize(18)
-        doc.text(14, y1, "<%= coordinator[i].name %>");
-        y1 += 80;
-
-        doc.setFontSize(14)
-        doc.setTextColor(100,100,100);
-        doc.text(14, y2, "<%= coordinator[i].email %>");
-        y2 += 80;
-        doc.text(14, y3, "<%= coordinator[i].mobile_no %>");
-        y3 += 80;
-        <% if(coordinator[i].course != "null") { %>
-        doc.text(14, y4, "<%= coordinator[i].course %>");
-        y4 += 80;
-        doc.text(14, y5, "<%= coordinator[i].branch %>");
-        y5 += 80;
-        doc.text(14, y6, "<%= coordinator[i].year %>");
-        y6 += 80;
-        <% } %>
-    <% } %>
-
-
-    doc.autoPrint();
-    doc.save("Report.pdf");
-});
-}
-</script>
-
+</body>
 </html>
