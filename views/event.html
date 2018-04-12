@@ -3,7 +3,9 @@
 <script>history.pushState(null, "", location.href.split("?")[0]);</script>
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= event_details[0].event_name %></title>
     <link rel="stylesheet" type="text/css" href="/static/styles/event/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/styles/event/slicknav.css">
@@ -158,7 +160,7 @@
                 <div class="carousel-caption d-md-block">
                     <h1 class="wow fadeInDown heading" data-wow-delay=".4s"><%= event_details[0].event_name %></h1>
                     <% if(event_status==="upcoming"){ %>
-                    <a href="" data-toggle="modal" data-target="#myModal" class="fadeInLeft wow btn btn-common btn-lg"
+                    <a href="" data-toggle="modal" data-target="#myModal" class="fadeInLeft wow btn btn-border btn-lg"
                        data-wow-delay=".6s">Get Ticket</a>
                     <%}%>
                     <a id="exploremore" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore
@@ -386,7 +388,11 @@
                         <h2>&#8377;<%= event_details[0].non_abacus_price%></h2>
                         <p><%= event_details[0].avilable_seats %> Tickets Available</p>
                     </div>
+                    <% if(event_status==="upcoming"){ %>
                     <a href="" data-toggle="modal" data-target="#myModal" class="btn btn-common">Register Now</a>
+                    <% }else{ %>
+                    <a href="" class="btn btn-common" onclick="alert('This event has ended!');">Register Now</a>
+                    <% } %>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xa-12 mb-3">
@@ -401,7 +407,11 @@
                         <h2>&#8377;<%= event_details[0].abacus_price%></h2>
                         <p><%= event_details[0].avilable_seats %> Tickets Available</p>
                     </div>
+                    <% if(event_status==="upcoming"){ %>
                     <a href="" data-toggle="modal" data-target="#myModal" class="btn btn-common">Register Now</a>
+                    <% }else{ %>
+                    <a href="" class="btn btn-common" onclick="alert('This event has ended!');">Register Now</a>
+                    <% } %>
                 </div>
             </div>
         </div>
