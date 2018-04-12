@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7229dda-0cdd-4063-a8de-e7ab43973a47" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 02:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 03:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 04:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 05:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 06:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 07:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/09-04-2018 08:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/10-04-2018 08:00:00" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/DBScripts/project.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dump.rdb" afterPath="$PROJECT_DIR$/dump.rdb" />
-      <change beforePath="$PROJECT_DIR$/logs/log.2018-04-09" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/logs/log.2018-04-10" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/styles/event/main.css" afterPath="$PROJECT_DIR$/static/styles/event/main.css" />
-      <change beforePath="$PROJECT_DIR$/views/event.html" afterPath="$PROJECT_DIR$/views/event.html" />
-    </list>
+    <list default="true" id="c7229dda-0cdd-4063-a8de-e7ab43973a47" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -271,7 +255,7 @@
       <workItem from="1523217590064" duration="24859000" />
       <workItem from="1523324801318" duration="5233000" />
       <workItem from="1523372117920" duration="6649000" />
-      <workItem from="1523558399979" duration="2619000" />
+      <workItem from="1523558399979" duration="2661000" />
     </task>
     <task id="LOCAL-00001" summary="changed event page">
       <created>1523328288684</created>
@@ -301,11 +285,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523380445261</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changed event page">
+      <created>1523561048996</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523561048997</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40179000" />
+    <option name="totallyTimeSpent" value="40221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="89" width="1366" height="736" extended-state="6" />
@@ -716,14 +707,14 @@
         <state relative-caret-position="182">
           <caret line="5" column="37838" lean-forward="false" selection-start-line="5" selection-start-column="37838" selection-end-line="5" selection-end-column="37838" />
           <folding>
-            <element signature="e#61909#62109#2" expanded="true" />
-            <element signature="e#62317#62466#2" expanded="true" />
-            <element signature="e#62968#63114#2" expanded="true" />
-            <element signature="e#63415#63581#1" expanded="true" />
-            <element signature="e#74301#74544#2" expanded="true" />
-            <element signature="e#75411#75660#2" expanded="true" />
-            <element signature="e#101957#102147#2" expanded="true" />
-            <element signature="e#102193#102383#2" expanded="true" />
+            <element signature="e#61909#62109#2" expanded="false" />
+            <element signature="e#62317#62466#2" expanded="false" />
+            <element signature="e#62968#63114#2" expanded="false" />
+            <element signature="e#63415#63581#1" expanded="false" />
+            <element signature="e#74301#74544#2" expanded="false" />
+            <element signature="e#75411#75660#2" expanded="false" />
+            <element signature="e#101957#102147#2" expanded="false" />
+            <element signature="e#102193#102383#2" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,19 +734,19 @@
             <element signature="n#section#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h5#0;n#div#0;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#1;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#2;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h5#0;n#div#2;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h5#0;n#div#1;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#img#0;n#div#2;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h5#0;n#div#2;n#div#1;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#section#3;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#section#3;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#section#5;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#section#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#section#5;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#section#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#section#6;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#a#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
