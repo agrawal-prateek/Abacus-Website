@@ -1,6 +1,6 @@
 module.exports={
 	env:'dev',
-	applicationUrl: 'http://35.200.139.124',
+	applicationUrl: 'http://35.231.227.203',
 	port:{
 		http:80,
         https: 443
