@@ -30,10 +30,18 @@ If node server successfully starts then you will need to start redis server and 
 
 	sudo redis-server
 
-For any query contact me on
 
-[prateekagrawal89760@gmail.com ](mailto://prateekagrawal89760@gmail.com)
+For any query, feel free and contact me
 
-[+91-7464847884](tel://+917464847884)
 
-# THANKS FOR READING
+**Prateek Agrawal**  
+prateekagrawal89760@gmail.com  
+[Website][4] | [LinkedIn][5] | (+91) 7464847884
+
+
+
+
+ [4]: http://agrawal-prateek.github.io
+ [5]: https://www.linkedin.com/in/agrawal-prateek
+
+#### Thanks for Reading
